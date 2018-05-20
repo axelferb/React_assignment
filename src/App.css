@@ -1,0 +1,34 @@
+body {
+    padding-top: 100px;
+}
+
+.centerAligned {
+    text-align: center;
+}
+
+.underlined {
+    box-sizing: border-box;
+    border-bottom: 1px solid white;
+}
+
+.converterDiv {
+    background-color: green;
+    color: white;
+}
+
+.col-md-3 {
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.col-md-9 {
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
