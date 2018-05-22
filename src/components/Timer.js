@@ -5,39 +5,43 @@ import '../App.css';
 class Timer extends React.Component {
 
     state = {
-        setTime: [0],
-        milliseconds: [0],
-        inputValue: [],
+        value: '',
+        timeSet: '',
+        milliseconds: '',
     }
 
-    msConverter = () => {
-        this.setState({ milliseconds: this.state.setTime / 60 / 1000 })
-        console.log(this.state.setTime)
-    }
-
-    // setTimer = () => {
-    //     setTimeout§§§§§§§
-    // }
-
-    onChange(event) {
-        this.setState({ inputValue: event.target.value });
+    handleInput(event) {
+        this.setState({ value: event.target.value });
+        // console.log(this.state.value)
     }
 
     handleSubmit() {
-        this.setState({ setTime: this.state.inputValue });
+        this.setState({ timeSet: this.state.value });
+        this.msConverter();
+        this.timerFunction();
+        // console.log(this.state.timeSet)
+    }
+
+    msConverter = () => {
+        this.setState({ milliseconds: this.state.timeSet * 1000 * 60 })
+        console.log(this.state.milliseconds)
+    }
+
+    timerFunction = () => {
+        setTimeout(() => { alert("kuken") }, this.state.milliseconds);
     }
 
     componentDidMount() {
-        this.msConverter()
+        this.msConverter();
     }
 
     render() {
         return (
             <div className="col-md-9">
-                {/* <label htmlFor="time">Set timer minutes</label> */}
-                <input value={this.state.inputValue} onChange={this.onChange} placeholder="Minutes" type="number" name="time"></input>
-                <button onClick={this.handleSubmit} type="submit">Start timer!</button>
-            </div >
+                <input value={this.state.value} onChange={this.handleInput.bind(this)} placeholder="Minutes" type="number" name="time"></input>
+                <button onClick={this.handleSubmit.bind(this)} type="submit">Start timer!</button>
+                <h1>Sekunder kvar: {this.state.milliseconds / 1000}</h1>
+            </div>
         )
     }
 }
