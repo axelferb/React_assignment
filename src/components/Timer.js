@@ -12,14 +12,12 @@ class Timer extends React.Component {
 
     handleInput(event) {
         this.setState({ value: event.target.value });
-        // console.log(this.state.value)
     }
 
     handleSubmit() {
         this.setState({ timeSet: this.state.value });
         this.msConverter();
         this.timerFunction();
-        // console.log(this.state.timeSet)
     }
 
     msConverter = () => {
@@ -33,6 +31,10 @@ class Timer extends React.Component {
 
     componentDidMount() {
         this.msConverter();
+    }
+
+    componentDidUpdate() {
+
     }
 
     render() {
