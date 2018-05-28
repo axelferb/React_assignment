@@ -10,31 +10,40 @@ class Timer extends React.Component {
         milliseconds: '',
     }
 
+    update() {
+        this.setState({
+            milliseconds: this.state.milliseconds,
+        });
+    }
+
     handleInput(event) {
         this.setState({ value: event.target.value });
     }
 
     handleSubmit() {
-        this.setState({ timeSet: this.state.value });
-        this.msConverter();
-        this.timerFunction();
+        this.setState({ timeSet: this.state.value })
+        this.msConverter()
+        this.timerFunction()
     }
 
-    msConverter = () => {
+    msConverter() {
         this.setState({ milliseconds: this.state.timeSet * 1000 * 60 })
         console.log(this.state.milliseconds)
     }
 
-    timerFunction = () => {
-        setTimeout(() => { alert("kuken") }, this.state.milliseconds);
+    timerFunction() {
+        setTimeout(() => { alert("DING") }, this.state.milliseconds);
     }
 
     componentDidMount() {
-        this.msConverter();
+        this.timerUpdate = setInterval(
+            () => this.update(),
+            1000
+        );
     }
 
     componentDidUpdate() {
-
+        clearInterval(this.timerUpdate);
     }
 
     render() {
