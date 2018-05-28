@@ -5,53 +5,44 @@ import '../App.css';
 class Timer extends React.Component {
 
     state = {
-        value: '',
         timeSet: '',
         milliseconds: '',
     }
 
-    update() {
+    handleInput = (event) => {
         this.setState({
-            milliseconds: this.state.milliseconds,
-        });
+            timeSet: event.target.value,
+        })
     }
 
-    handleInput(event) {
-        this.setState({ value: event.target.value });
+    msConvert = () => {
+        this.setState({
+            milliseconds: this.state.timeSet * 1000 * 60
+        })
     }
 
-    handleSubmit() {
-        this.setState({ timeSet: this.state.value })
-        this.msConverter()
-        this.timerFunction()
-    }
-
-    msConverter() {
-        this.setState({ milliseconds: this.state.timeSet * 1000 * 60 })
+    updateValue = () => {
+        console.log(this.state.timeSet)
         console.log(this.state.milliseconds)
     }
 
-    timerFunction() {
+    handleSubmit = () => {
+        this.updateValue();
+        this.msConvert();
+        this.startTimer();
+    }
+
+    startTimer = () => {
         setTimeout(() => { alert("DING") }, this.state.milliseconds);
-    }
-
-    componentDidMount() {
-        this.timerUpdate = setInterval(
-            () => this.update(),
-            1000
-        );
-    }
-
-    componentDidUpdate() {
-        clearInterval(this.timerUpdate);
     }
 
     render() {
         return (
             <div className="col-md-9">
                 <input value={this.state.value} onChange={this.handleInput.bind(this)} placeholder="Minutes" type="number" name="time"></input>
-                <button onClick={this.handleSubmit.bind(this)} type="submit">Start timer!</button>
-                <h1>Sekunder kvar: {this.state.milliseconds / 1000}</h1>
+                <button onClick={this.handleSubmit.bind(this)}>Update</button>
+                {/* <button onClick={this.handleSubmit.bind(this)} type="submit">Start timer!</button> */}
+                {/* <h1>Sekunder kvar: {this.state.milliseconds / 1000}</h1> */}
             </div>
         )
     }
