@@ -9,30 +9,30 @@ class Timer extends React.Component {
         milliseconds: '',
     }
 
-    handleInput = (event) => {
+    handleInput(event) {
         this.setState({
             timeSet: event.target.value,
         })
     }
 
-    msConvert = () => {
+    msConvert() {
         this.setState({
             milliseconds: this.state.timeSet * 1000 * 60
         })
     }
 
-    updateValue = () => {
+    updateValue() {
         console.log(this.state.timeSet)
         console.log(this.state.milliseconds)
     }
 
-    handleSubmit = () => {
+    handleSubmit() {
         this.updateValue();
         this.msConvert();
         this.startTimer();
     }
 
-    startTimer = () => {
+    startTimer() {
         setTimeout(() => { alert("DING") }, this.state.milliseconds);
     }
 
