@@ -25,7 +25,6 @@ class Clock extends React.Component {
         clearInterval(this.clockUpdate);
     }
 
-
     render() {
         return (
             <div className="col-md-3">

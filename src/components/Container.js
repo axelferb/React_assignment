@@ -13,8 +13,7 @@ function Container(props) {
 }
 
 Container.propTypes = {
-    children: PropTypes.object,
-    children: PropTypes.array
+
 }
 
 export default Container;
