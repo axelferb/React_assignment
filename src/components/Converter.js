@@ -5,8 +5,8 @@ import '../App.css';
 class Converter extends React.Component {
 
     state = {
-        monetaryValue: [],
-        lastUpdate: []
+        monetaryValue: '',
+        lastUpdate: ''
     }
 
     componentDidMount() {

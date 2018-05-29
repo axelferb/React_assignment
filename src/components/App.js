@@ -4,6 +4,7 @@ import Container from './Container';
 import Converter from './Converter';
 import Timer from './Timer';
 import Clock from './Clock';
+import Todo from './Todo';
 import '../App.css';
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
                 <Converter />
                 <Timer />
                 <Clock />
+                <Todo />
             </Container >
         )
     }
