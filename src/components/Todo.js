@@ -14,6 +14,7 @@ class Todo extends React.Component {
             inputText: event.target.value
         })
     }
+
     handleSubmit = () => {
         const newTodoList = [...this.state.todoItem];
         newTodoList.push(this.state.inputText)
@@ -22,15 +23,25 @@ class Todo extends React.Component {
         })
     }
 
+    loopTodoItems = () => {
+        for (let todoText in this.state.todoItem) {
+            console.log(todoText);
+        }
+    }
+
+    componentDidMount() {
+        this.loopTodoItems();
+    }
+
     render() {
         return (
             <div className="col-md-12">
                 <h2>TODO</h2>
                 <input value={this.state.inputText} onChange={this.handleInput.bind(this)} type="text" placeholder="Your todo"></input>
                 <button onClick={this.handleSubmit.bind(this)}>Submit Todo</button>
-                <div>
-                    {this.state.todoItem}
-                </div>
+                <ul>
+                    {this.loopTodoItems()}
+                </ul>
             </div>
         )
     }
