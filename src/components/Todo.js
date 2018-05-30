@@ -6,7 +6,13 @@ class Todo extends React.Component {
 
     state = {
         inputText: '',
-        todoItem: []
+        todoItem: (localStorage.getItem("toDo"))
+    }
+
+    componentWillMount() {
+        if (this.state.todoItem == null) {
+            localStorage.setItem("toDo", 'Du har ingenting att göra! Slappa eller skriv ner vad du faktiskt har att göra!');
+        }
     }
 
     handleInput = (event) => {
@@ -16,32 +22,30 @@ class Todo extends React.Component {
     }
 
     handleSubmit = () => {
-        const newTodoList = [...this.state.todoItem];
-        newTodoList.push(this.state.inputText)
+        const newTodoItem = this.state.inputText
+        localStorage.setItem("toDo", (newTodoItem));
         this.setState({
-            todoItem: newTodoList
+            todoItem: newTodoItem
         })
-        localStorage.setItem("Todos", JSON.stringify(newTodoList))
-        this.loopTodoItems()
     }
 
-    loopTodoItems = () => {
-        let storedTodos = JSON.parse(localStorage.getItem("Todos"));
-        let todoList = storedTodos.map(function (storedTodos) {
-            return <li>{storedTodos}</li>
-        })
-        return <ul>{todoList}</ul>
+    displayStoredTodos = () => {
+        let storedTodo = this.state.todoItem
+        return (
+            <div className="centeredText">
+                <p>
+                    {storedTodo}
+                </p>
+            </div>
+        )
     }
 
     render() {
         return (
-            <div className="col-md-12">
-                <h2>TODO</h2>
-                <input value={this.state.inputText} onChange={this.handleInput.bind(this)} type="text" placeholder="Your todo"></input>
-                <button onClick={this.handleSubmit.bind(this)}>Submit Todo</button>
-                <div>
-                    {}
-                </div>
+            <div className="col-md-3">
+                <textarea id="inputField" value={this.state.inputText} onChange={this.handleInput.bind(this)} type="text" />
+                <button onClick={this.handleSubmit.bind(this)}>Submit</button>
+                {this.displayStoredTodos()}
             </div>
         )
     }
