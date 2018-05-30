@@ -21,16 +21,16 @@ class Todo extends React.Component {
         this.setState({
             todoItem: newTodoList
         })
+        localStorage.setItem("Todos", JSON.stringify(newTodoList))
+        this.loopTodoItems()
     }
 
     loopTodoItems = () => {
-        for (let todoText in this.state.todoItem) {
-            console.log(todoText);
-        }
-    }
-
-    componentDidMount() {
-        this.loopTodoItems();
+        let storedTodos = JSON.parse(localStorage.getItem("Todos"));
+        let todoList = storedTodos.map(function (storedTodos) {
+            return <li>{storedTodos}</li>
+        })
+        return <ul>{todoList}</ul>
     }
 
     render() {
@@ -39,9 +39,9 @@ class Todo extends React.Component {
                 <h2>TODO</h2>
                 <input value={this.state.inputText} onChange={this.handleInput.bind(this)} type="text" placeholder="Your todo"></input>
                 <button onClick={this.handleSubmit.bind(this)}>Submit Todo</button>
-                <ul>
-                    {this.loopTodoItems()}
-                </ul>
+                <div>
+                    {}
+                </div>
             </div>
         )
     }
