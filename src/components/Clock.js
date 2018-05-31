@@ -27,8 +27,8 @@ class Clock extends React.Component {
 
     render() {
         return (
-            <div className="col-md-3">
-                <p>{this.state.date.toLocaleTimeString()}</p>
+            <div className="col-md-12 centerAligned clock">
+                <h1>{this.state.date.toLocaleTimeString()}</h1>
             </div>
         )
     }

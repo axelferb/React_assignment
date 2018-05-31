@@ -1,13 +1,60 @@
 body {
     padding-top: 100px;
+    background-color: #f4f4f43c;
 }
 
 textarea {
     min-width: 100%;
 }
 
+.postit {
+    color: black;
+    background-color: #fafa70;
+}
+
+.borderRadiusTop {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.borderRadiusBottom {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.postitText {
+    font-family: 'Roboto', sans-serif;
+}
+
 .centerAligned {
     text-align: center;
+}
+
+.clock {
+    font-family: 'Oxygen Mono', monospace;
+}
+
+.weather {
+    text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    color: white;
+    background-color: #a1c4fd;
+    text-shadow: 1px 1px #000000;
+    font-weight: bold;
+}
+
+.timer {
+    background-color: #42428a;
+    font-family: 'Roboto', sans-serif;
+}
+
+.timerDone {
+    background-color: rgb(255, 56, 56);
+    font-family: 'Roboto', sans-serif;
+}
+
+.bigText {
+    font-size: 1.5em;
 }
 
 .centeredText {
@@ -29,29 +76,37 @@ textarea {
 .converterDiv {
     background-color: green;
     color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 .col-md-3 {
-    box-sizing: border-box;
-    border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
+    margin: 15px;
     min-height: 285px;
 }
 
-.col-md-9 {
-    box-sizing: border-box;
-    border: 1px solid black;
+.col-md-6 {
     border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+    min-height: 285px;
 }
 
 .col-md-12 {
-    box-sizing: border-box;
-    border: 1px solid black;
+    margin: 15px;
     border-radius: 10px;
+    text-decoration: underline;
 }
 
 .row {
     display: flex;
     justify-content: center;
+}
+
+.timerText {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+    text-transform: uppercase;
 }

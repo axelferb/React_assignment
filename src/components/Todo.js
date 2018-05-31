@@ -11,7 +11,7 @@ class Todo extends React.Component {
 
     componentWillMount() {
         if (this.state.todoItem == null) {
-            localStorage.setItem("toDo", 'Du har ingenting att göra! Slappa eller skriv ner vad du faktiskt har att göra!');
+            localStorage.setItem("toDo", 'You have nothing you have to do!');
         }
     }
 
@@ -33,7 +33,7 @@ class Todo extends React.Component {
         let storedTodo = this.state.todoItem
         return (
             <div className="centeredText">
-                <p>
+                <p className="postitText">
                     {storedTodo}
                 </p>
             </div>
@@ -42,9 +42,12 @@ class Todo extends React.Component {
 
     render() {
         return (
-            <div className="col-md-3">
-                <textarea id="inputField" value={this.state.inputText} onChange={this.handleInput.bind(this)} type="text" />
-                <button onClick={this.handleSubmit.bind(this)}>Submit</button>
+            <div className="col-md-3 postit">
+                <div className="form-group">
+                    <textarea className="borderRadiusTop form-control" value={this.state.inputText} onChange={this.handleInput.bind(this)} type="text" />
+                    <button className="borderRadiusBottom btn btn-sm btn-block" onClick={this.handleSubmit.bind(this)}>Submit</button>
+                </div>
+                <hr />
                 {this.displayStoredTodos()}
             </div>
         )
