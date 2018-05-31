@@ -24,10 +24,11 @@ class Converter extends React.Component {
 
     render() {
         return (
-            <div className="col-md-3 converterDiv">
-                <h2 className="centerAligned">Currency Converter</h2>
-                <p className="centerAligned">1 EUR = <span className="underlined">{this.state.monetaryValue} SEK</span></p>
-                <p className="centerAligned">Last updated: {this.state.lastUpdate}</p>
+            <div className="centerAligned col-md-3 converterDiv">
+                <h2 className="">Currency Converter</h2>
+                <p className="">1 EUR = <span className="underlined">{this.state.monetaryValue} SEK</span></p>
+                <p className="">Last updated: {this.state.lastUpdate}</p>
+                <button className="btn btn-warning" onClick={this.fetchConverter.bind(this)}>Update</button>
             </div>
         )
     }
