@@ -5,39 +5,63 @@ import '../App.css';
 class Timer extends React.Component {
 
     state = {
-        setTime: [0],
-        milliseconds: [0],
-        inputValue: [],
+        timerStartStop: '',
+        timeSet: '',
+        timerClass: 'col-md-6 centerAligned timer',
+        timerMessage1: 'The timer is currently set to ',
+        timerMessage2: ' minute(s)'
     }
 
-    msConverter = () => {
-        this.setState({ milliseconds: this.state.setTime / 60 / 1000 })
-        console.log(this.state.setTime)
+    handleInput = (event) => {
+        this.setState({
+            timeSet: event.target.value * 1000 * 60
+        })
     }
 
-    // setTimer = () => {
-    //     setTimeout§§§§§§§
-    // }
-
-    onChange(event) {
-        this.setState({ inputValue: event.target.value });
+    handleStart = () => {
+        this.startTimer();
+        this.setState({
+            timerClass: 'col-md-6 centerAligned timer',
+            timerMessage1: 'The timer is currently set to ',
+            timerMessage2: ' minute(s)'
+        })
     }
 
-    handleSubmit() {
-        this.setState({ setTime: this.state.inputValue });
+    startTimer() {
+        this.setState({
+            timerStartStop:
+                setTimeout(() => {
+                    this.setState({
+                        timerClass: 'col-md-6 centerAligned timerDone',
+                        timerMessage1: 'The timer you set to ',
+                        timerMessage2: ' minute(s) is now completed'
+                    })
+                },
+                    this.state.timeSet)
+        })
     }
 
-    componentDidMount() {
-        this.msConverter()
+    resetTimer() {
+        window.clearTimeout(this.state.timerStartStop)
+        this.setState({
+            timerClass: 'col-md-6 centerAligned timerDone',
+            timerMessage1: 'The timer you set to ',
+            timerMessage2: ' minute(s) is now reset'
+        })
     }
 
     render() {
         return (
-            <div className="col-md-9">
-                {/* <label htmlFor="time">Set timer minutes</label> */}
-                <input value={this.state.inputValue} onChange={this.onChange} placeholder="Minutes" type="number" name="time"></input>
-                <button onClick={this.handleSubmit} type="submit">Start timer!</button>
-            </div >
+            <div className={this.state.timerClass}>
+                <div className="input-group mb-3">
+                    <input className="form-control" value={this.state.value} onChange={this.handleInput.bind(this)} placeholder="Minutes" type="number" name="time"></input>
+                    <div className="input-group-append">
+                        <button className="btn-success btn" onClick={this.handleStart.bind(this)}>Start</button>
+                        <button className="btn-warning btn" onClick={this.resetTimer.bind(this)}>Reset</button>
+                    </div>
+                </div>
+                <p className="timerText">{this.state.timerMessage1} {this.state.timeSet / 1000 / 60}  {this.state.timerMessage2}</p>
+            </ div >
         )
     }
 }
