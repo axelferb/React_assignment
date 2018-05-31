@@ -11,7 +11,7 @@ class Todo extends React.Component {
 
     componentWillMount() {
         if (this.state.todoItem == null) {
-            localStorage.setItem("toDo", 'You have nothing you have to do!');
+            localStorage.setItem("toDo", 'You have nothing to do!');
         }
     }
 
