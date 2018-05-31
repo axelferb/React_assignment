@@ -28,7 +28,7 @@ class Converter extends React.Component {
                 <h2 className="">Currency Converter</h2>
                 <p className="">1 EUR = <span className="underlined">{this.state.monetaryValue} SEK</span></p>
                 <p className="">Last updated: {this.state.lastUpdate}</p>
-                <button className="btn btn-warning" onClick={this.fetchConverter.bind(this)}>Update</button>
+                <button className="btn btn-warning" onClick={this.fetchConverter.bind(this)}>Check for update</button>
             </div>
         )
     }
